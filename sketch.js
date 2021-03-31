@@ -8,12 +8,13 @@ function setup() {
 function draw() {
   background(0);
   ship.render();
+  ship.turn(0.1);
 }
 
 function Ship() {
   this.pos = createVector(width/2, height/2);
   this.r = 20;
-  this.heading = 90;
+  this.heading = 0;
 
   this.render = function() {
     translate(this.pos.x, this.pos.y);
@@ -22,6 +23,10 @@ function Ship() {
     stroke(255);
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
 
+  }
+
+  this.turn = function(angle) {
+    this.heading += angle;
   }
 
 }
