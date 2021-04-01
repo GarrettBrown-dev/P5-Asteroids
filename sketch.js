@@ -10,6 +10,7 @@ function draw() {
   ship.render();
   ship.turn();
   ship.update();
+  ship.edges();
 }
 
 function keyReleased() {
@@ -59,7 +60,19 @@ function Ship() {
     noFill();
     stroke(255);
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+  }
 
+  this.edges = function() {
+    if (this.pos.x > width + this.r) {
+      this.pos.x = -this.r;
+    } else if (this.pos.x < -this.r) {
+      this.pos.x = width + this.r;
+    }
+    if (this.pos.y > height + this.r) {
+      this.pos.y = -this.r;
+    } else if (this.pos.y < -this.r) {
+      this.pos.y = height + this.r;
+    }
   }
 
   this.setRotation = function(a) {
