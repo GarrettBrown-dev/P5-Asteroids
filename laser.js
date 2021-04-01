@@ -6,7 +6,7 @@ function Laser(spos, angle) {
   this.update = function() {
     this.pos.add(this.vel);
   };
-  
+
   this.render = function() {
     push();
     stroke(255);
@@ -22,6 +22,16 @@ function Laser(spos, angle) {
     } else {
       return false;
     }
+  }
+
+  this.offscreen = function() {
+    if (this.pos.x > width || this.pos.x < 0) {
+      return true;
+    }
+    if (this.pos.y > height || this.pos.y < 0) {
+      return true;
+    }
+    return false;
   }
 
 }
